@@ -1,5 +1,7 @@
 
 
+import ru.rostelecom.UsersDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static ru.rostelecom.UsersDAO.*;
+
 
 /**
  * Created by Admin on 25.11.2015.
@@ -22,7 +24,7 @@ public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            request.setAttribute("Users", getUsers());
+            request.setAttribute("Users", UsersDAO.getUsers());
         } catch (SQLException e) {
             e.printStackTrace();
         }
