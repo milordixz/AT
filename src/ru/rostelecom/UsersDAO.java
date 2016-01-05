@@ -62,6 +62,7 @@ public class UsersDAO {
     public static int checkUser(String login, String password) throws SQLException {
         int status = 0;
         conn = ConnectionFactory.getCon();
+        try {
         pst = conn.prepareStatement("SELECT  test.login,test.password FROM test WHERE test.login =? AND  test.password =?");
                 pst.setString(1,login);
                 pst.setString(2,password);
@@ -69,8 +70,18 @@ public class UsersDAO {
         resultSet.next();
         System.out.println(pst.toString());
         System.out.println(resultSet);
-       if(login.equals(resultSet.getString(1))  && password.equals(resultSet.getString(2))) status = 1;
 
+       if(login.equals(resultSet.getString(1))  && password.equals(resultSet.getString(2)))
+       {
+           status = 1;
+       }
+       else
+       {
+           status = 0;
+       }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
             return status;
 
 
