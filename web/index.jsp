@@ -29,10 +29,7 @@
   <label for="tab-nav-2">Ответ</label>
   <input type="radio" name="tabs" id="tab-nav-3">
   <label for="tab-nav-3">История</label>
-  <form>
-    <input placeholder="Поиск" type="search" class="search" >
 
-  </form>
   <div class="tabs">
     <div>
       <form action="login" method="get">

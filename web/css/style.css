@@ -13,7 +13,7 @@ body {
 }
 
 .tabbed{
-    width: 700px;
+    width: 350px;
     margin: 50px auto;
 
 }
@@ -45,7 +45,8 @@ clear: both;
 }
 
 .tabs>div{
-    width: 750px;
+    left: 20%;
+    right: 20%;
     height: 800px;
     position: absolute;
     border: 2px solid #47a3da;
@@ -79,36 +80,6 @@ input {
     outline: none;
 }
 
-input[type=search] {
-    background:  url(search-icon.png) no-repeat 9px center;
-   border: solid 1px #47a3da;
-    padding: 9px 10px 9px 32px;
-    width: 55px;
-    
-    -webkit-border-radius: 10em;
-    -moz-border-radius: 10em;
-    border-radius: 10em;
-    
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-}
-input[type=search] {
-    width: 18px;
-    padding-left: 10px;
-    color: transparent;
-    cursor: pointer;
-}
-input[type=search]:hover {
-    background-color: #fff;
-}
-input[type=search]:focus {
-    width: 130px;
-    padding-left: 32px;
-    color: #000;
-    background-color: #fff;
-    cursor: auto;
-}
 
 input:-moz-placeholder {
     color: transparent;
