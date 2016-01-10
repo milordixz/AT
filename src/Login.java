@@ -22,13 +22,17 @@ public class Login extends HttpServlet {
 
         try {
 
-            boolean status =  UsersDAO.checkUser(newJson.getString("login").toString(), newJson.getString("password").toString());
+
+               String FIO =    UsersDAO.checkUser(newJson.getString("login").toString(), newJson.getString("password").toString());
             System.out.println(newJson.getString("login"));
             System.out.println(newJson.getString("password"));
 
             response.setContentType("text/html; charset=UTF-8");
-            if (status == false) response.getOutputStream().write("User true".getBytes());
-            else response.getOutputStream().write("Incorrect login or password".getBytes());
+            if (!FIO.isEmpty()) {
+                response.getOutputStream().write(FIO.getBytes());
+            } else {
+                response.getOutputStream().write("Non password or login correct".getBytes());
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

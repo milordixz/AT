@@ -61,20 +61,28 @@ public class UsersDAO {
     }
 
 
-    public static boolean checkUser(String login, String password) throws SQLException {
-        int status = 0;
+    public static String checkUser(String login, String password) throws SQLException {
+        String FIO = "";
         conn = ConnectionFactory.getCon();
 
-            pst = conn.prepareStatement("SELECT  test.login,test.password FROM test WHERE test.login =? AND  test.password =?");
+            pst = conn.prepareStatement("SELECT  test.login,test.password, test.firstname, test.lastname  FROM test WHERE test.login =? AND  test.password =?");
             pst.setString(1, login);
             pst.setString(2, password);
             ResultSet resultSet = pst.executeQuery();
-            boolean myResultSetEmpty = isMyResultSetEmpty(resultSet);
+            boolean myResultSetEmpty = isMyResultSetEmpty(resultSet);// если нет пользователя то true
+        System.out.println(myResultSetEmpty);
+        if (myResultSetEmpty == false) {
+
+            resultSet.next();
+            FIO = resultSet.getString(3) + "" + resultSet.getString(4);
+            return FIO;
+
+        }
             System.out.println(pst.toString());
             System.out.println(resultSet);
             conn.close();
-
-        return myResultSetEmpty;
+        System.out.println(FIO);
+return FIO;
     }
 
 
