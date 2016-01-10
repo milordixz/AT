@@ -27,9 +27,9 @@ public class Message {
         Element message = getDictionary.addElement("smev:Message");
         Element sender = message.addElement("smev:Sender");
         Element code = sender.addElement("smev:Code")
-                .addText("IPGU01541");
+                .addText(sCode);
         Element name = sender.addElement("smev:Name")
-                .addText("EPGU");
+                .addText(sName);
         Element recipient = message.addElement("smev:Recipient");
         code = recipient.addElement("smev:Code")
                 .addText("000000541");
