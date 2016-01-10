@@ -70,7 +70,7 @@ public class UsersDAO {
         resultSet.next();
         System.out.println(pst.toString());
         System.out.println(resultSet);
-
+        conn.close();
        if(login.equals(resultSet.getString(1))  && password.equals(resultSet.getString(2)))
        {
            status = 1;
