@@ -22,8 +22,8 @@ public class Login extends HttpServlet {
             String login =  request.getParameter("login");
              String password =  request.getParameter("password");
 
-          int status =  UsersDAO.checkUser(login,password);
-            if (status == 1) response.getOutputStream().write("Такой пользователь есть!".getBytes());
+          boolean status =  UsersDAO.checkUser(login,password);
+            if (status == false) response.getOutputStream().write("Такой пользователь есть!".getBytes());
             else response.getOutputStream().write("Такого пользователя нет!".getBytes());
         } catch (SQLException e) {
             e.printStackTrace();

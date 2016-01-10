@@ -40,7 +40,9 @@ public class UsersDAO {
             pst = conn.prepareStatement("SELECT test.id, test.login,test.password,test.firstname,test.lastname FROM test");
             ResultSet resultSet = pst.executeQuery();
     ArrayList<Users> user = new ArrayList<Users>();
-            while(resultSet.next()){
+
+
+        while(resultSet.next()){
 
                 int id =  resultSet.getInt(1);
                 String login = resultSet.getString(2);
@@ -59,33 +61,30 @@ public class UsersDAO {
     }
 
 
-    public static int checkUser(String login, String password) throws SQLException {
+    public static boolean checkUser(String login, String password) throws SQLException {
         int status = 0;
         conn = ConnectionFactory.getCon();
-        try {
-        pst = conn.prepareStatement("SELECT  test.login,test.password FROM test WHERE test.login =? AND  test.password =?");
-                pst.setString(1,login);
-                pst.setString(2,password);
-        ResultSet resultSet = pst.executeQuery();
-        resultSet.next();
-        System.out.println(pst.toString());
-        System.out.println(resultSet);
-        conn.close();
-       if(login.equals(resultSet.getString(1))  && password.equals(resultSet.getString(2)))
-       {
-           status = 1;
-       }
-       else
-       {
-           status = 0;
-       }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-            return status;
 
+            pst = conn.prepareStatement("SELECT  test.login,test.password FROM test WHERE test.login =? AND  test.password =?");
+            pst.setString(1, login);
+            pst.setString(2, password);
+            ResultSet resultSet = pst.executeQuery();
+            boolean myResultSetEmpty = isMyResultSetEmpty(resultSet);
+            System.out.println(pst.toString());
+            System.out.println(resultSet);
+            conn.close();
 
+        return myResultSetEmpty;
     }
 
 
+    public static boolean isMyResultSetEmpty(ResultSet rs) throws SQLException {
+
+        if (!rs.isBeforeFirst() && rs.getRow() == 0){
+            return true;
+
+        }
+
+        else return false;
+    }
 }
