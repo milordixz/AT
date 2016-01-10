@@ -11,11 +11,16 @@ import java.util.Date;
 public class Message {
     String sName;
     String sCode;
-    SimpleDateFormat currentDate;
+    SimpleDateFormat currentDate =  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+    public String getCurrentDate() {
+        return currentDate.format(new Date());
+    }
+
     public Message(String senderName, String senderCode){
         sName = senderName;
         sCode = senderCode;
-        currentDate =  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");;
+
     }
 
     public void generateMessage(Element getDictionary){
@@ -40,7 +45,7 @@ public class Message {
         Element status = message.addElement("smev:Status")
                 .addText("REQUEST");
         Element date = message.addElement("smev:Date")
-                .addText(String.valueOf(currentDate));
+                .addText(getCurrentDate());
         Element exchangeType = message.addElement("smev:ExchangeType")
                 .addText("1");
         Element serviceCode = message.addElement("smev:ServiceCode")
