@@ -34,9 +34,9 @@
     <div>
       <form action="login" method="get">
         <h1>Проверка пользователя</h1>
-        <input type="text" name="login" placeholder="Login">
-        <input type="text" name="password" placeholder="Password">
-        <input type="submit" >
+        <input type="text" name="login" id="login" placeholder="Login">
+        <input type="text" name="password" id="password" placeholder="Password">
+        <input type="submit" onclick="send_sub()" >
       </form>
       <hr>
 

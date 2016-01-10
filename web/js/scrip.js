@@ -15,8 +15,7 @@ function get(){
       var gender = document.createElement('td');
       var birthDate = document.createElement('td');
       var phone = document.createElement('td');
-      <!--index.innerHTML = ind;
-      <!--tr.appendChild(index);
+
       fio.innerHTML = value.fio;
       tr.appendChild(fio);
       gender.innerHTML = value.gender;
@@ -30,5 +29,21 @@ function get(){
 
     });
 
-  <!--console.log(context);
+
   }
+
+
+function send_sub(){
+    var ajax = new XMLHttpRequest();
+    var log = document.getElementById("login").value;
+    var pas = document.getElementById("password").value;
+    ajax.open('POST', '/login', false);
+
+    var json = new Object();
+    json.login = log;
+    json.password = pas;
+    ajax.send(JSON.stringify(json));
+    var otv =  ajax.responseText;
+
+    alert(otv);
+}
