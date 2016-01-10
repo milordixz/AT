@@ -36,7 +36,7 @@ public class Main {
                 .addNamespace("atc", "http://at-sibir.ru/getDictionary")
                 .addNamespace("smev", "http://smev.gosuslugi.ru/rev120315")
                 .addNamespace("wsu","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd");
-       //create body for computing hash
+        //create body for computing hash
         Element body = createBody(envelop);
 
         String hash = en.getHash(body);
@@ -50,8 +50,8 @@ public class Main {
 
     private static Element createBody(Element root) throws ParseException {
         Element body = root.addElement("soap:Body")
-                            .addNamespace("wsu", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
-                            .addAttribute("wsu:Id", "body");
+                .addNamespace("wsu", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
+                .addAttribute("wsu:Id", "body");
         Element getDictionary = body.addElement("atc:getDictionary");
         Message message = new Message("raz", "999999999");
         message.generateMessage(getDictionary);
