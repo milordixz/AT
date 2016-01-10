@@ -1,6 +1,8 @@
 package soap;
 
 import org.dom4j.Element;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,11 +11,11 @@ import java.util.Date;
 public class Message {
     String sName;
     String sCode;
-    Date currentDate;
+    SimpleDateFormat currentDate;
     public Message(String senderName, String senderCode){
         sName = senderName;
         sCode = senderCode;
-        currentDate = new Date();
+        currentDate =  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");;
     }
 
     public void generateMessage(Element getDictionary){
@@ -38,7 +40,7 @@ public class Message {
         Element status = message.addElement("smev:Status")
                 .addText("REQUEST");
         Element date = message.addElement("smev:Date")
-                .addText("2000-01-01T00:00:00");
+                .addText(String.valueOf(currentDate));
         Element exchangeType = message.addElement("smev:ExchangeType")
                 .addText("1");
         Element serviceCode = message.addElement("smev:ServiceCode")

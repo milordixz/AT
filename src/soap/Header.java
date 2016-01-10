@@ -16,14 +16,14 @@ public class Header {
 
     String c;
     String h;
-    String s;
-    public Header(String cert, String hash , String sign){
+    Encrypt s;
+    public Header(String cert, String hash , Encrypt encrypt){
         c = cert;
         h = hash;
-        s = sign;
+        this.s = encrypt;
 
     }
-    public void generateHeader(Element root) throws CertificateException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, SignatureException, NoSuchProviderException, InvalidKeyException, IOException, SAXException, ParserConfigurationException, CanonicalizationException, InvalidCanonicalizerException {
+    public void generateHeader(Element root) throws CertificateException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, SignatureException, NoSuchProviderException, InvalidKeyException, IOException, SAXException, ParserConfigurationException, CanonicalizationException, InvalidCanonicalizerException, org.apache.xml.security.c14n.CanonicalizationException, org.apache.xml.security.c14n.InvalidCanonicalizerException {
         Element header =  root.addElement("soap:Header");
         Element security = header.addElement("wsse:Security")
                 .addAttribute("soap:actor", "http://smev.gosuslugi.ru/actors/smev");
@@ -53,7 +53,7 @@ public class Header {
 
         //Суда добавим подпись
         Element signatureValue = signature.addElement("ds:SignatureValue")
-                .addText(s);
+                .addText(s.getSignature(signedInfo));
         //
         Element keyInfo = signature.addElement("ds:KeyInfo")
                 .addAttribute("Id", "KeyId-1");
