@@ -45,8 +45,13 @@
                 <smev:Date>2016-01-10T08:07:58</smev:Date>
                 <smev:ExchangeType>1</smev:ExchangeType>
                 <smev:ServiceCode>5440100010000545045</smev:ServiceCode>
-                <smev:CaseNumber>70263950</smev:CaseNumber></smev:Message>
-            <smev:ru.rostelecom.soap.MessageData><smev:AppData>
+                <smev:CaseNumber>70263950</smev:CaseNumber>
+            </smev:Message>
+            <smev:MessageData>
+                <smev:AppData>
                 <c580d006-f86f-4bdd-84be-b51de6f626c6/>
-            </smev:AppData></smev:ru.rostelecom.soap.MessageData>
-        </atc:getDictionary></soap:Body></soap:Envelope>
+            </smev:AppData>
+            </smev:MessageData>
+        </atc:getDictionary>
+    </soap:Body>
+</soap:Envelope>
