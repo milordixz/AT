@@ -18,9 +18,25 @@ import java.text.ParseException;
 /**
  * Created by Milord on 10.01.2016.
  */
-public class Main {
 
-    public static void main(String[] args) throws ParseException, NoSuchAlgorithmException, CertificateException, NoSuchProviderException, KeyStoreException, IOException, UnrecoverableKeyException, ParserConfigurationException, SAXException, CanonicalizationException, InvalidCanonicalizerException, SignatureException, InvalidKeyException, org.apache.xml.security.c14n.CanonicalizationException, org.apache.xml.security.c14n.InvalidCanonicalizerException {
+
+
+
+
+/**
+ * Created by Admin on 25.11.2015.
+ */
+
+public class Soap {
+    String sName;
+    String sCode;
+    String sData;
+    public Soap(String senderName, String senderCode, String senderData){
+        sName = senderName;
+        sCode = senderCode;
+        sData= senderData;
+    }
+    public String create() throws ParseException, NoSuchAlgorithmException, CertificateException, NoSuchProviderException, KeyStoreException, IOException, UnrecoverableKeyException, ParserConfigurationException, SAXException, CanonicalizationException, InvalidCanonicalizerException, SignatureException, InvalidKeyException, org.apache.xml.security.c14n.CanonicalizationException, org.apache.xml.security.c14n.InvalidCanonicalizerException {
 
         Encrypt en = new Encrypt();
         en.initProvider();
@@ -45,17 +61,17 @@ public class Main {
         Header header = new Header(certificate,hash, en );
         header.generateHeader(envelop);
         createBody(envelop);
-        System.out.println(envelop.asXML());
+        return envelop.asXML();
     }
 
-    private static Element createBody(Element root) throws ParseException {
+    private Element createBody(Element root) throws ParseException {
         Element body = root.addElement("soap:Body")
                 .addNamespace("wsu", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
                 .addAttribute("wsu:Id", "body");
         Element getDictionary = body.addElement("atc:getDictionary");
-        Message message = new Message("raz", "999999999");
+        Message message = new Message(sName, sCode);
         message.generateMessage(getDictionary);
-        MessageData messageData = new MessageData("c580d006-f86f-4bdd-84be-b51de6f626c6");
+        MessageData messageData = new MessageData(sData);
         messageData.generateMessageData(getDictionary);
         return body;
     }

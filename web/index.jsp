@@ -32,12 +32,12 @@
 
   <div class="tabs">
     <div>
-      <form action="login" method="get">
+
         <h1>Проверка пользователя</h1>
         <input type="text" name="login" id="login" placeholder="Login">
         <input type="text" name="password" id="password" placeholder="Password">
         <input type="submit" onclick="send_sub()" >
-      </form>
+
       <hr>
 
       <table style="width: 100%">
@@ -62,6 +62,17 @@
       </table>
     </div>
     <div>
+
+        <h1>Проверка Soap</h1>
+        <h5>sName</h5>
+        <input type="text" name="sName" id="sName" placeholder="sName">
+      <h5>sCode</h5>
+        <input type="text" name="sCode" id="sCode" placeholder="sCode">
+      <h5>sData</h5>
+        <input type="text" name="sData" id="sData" placeholder="sData">
+        <input type="submit" onclick="send_soap()" >
+      <hr>
+<plaintext id="div2"></plaintext>
 
     </div>
     <div><table style="width: 100%">

@@ -16,7 +16,8 @@
                         </ds:Transforms>
                         <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#gostr3411"/>
                         <ds:DigestValue>u6SLi9FF/vLOYyL75/4lCiBdFzp4lKet5kz7GkjAnE0=</ds:DigestValue>
-                    </ds:Reference></ds:SignedInfo>
+                    </ds:Reference>
+                </ds:SignedInfo>
                 <ds:SignatureValue>7dtUrNskeddrKxfz1w1T0N2huBBbdy+oAUw64w0E/tcrFCz4kdrQFevmTuV1uXyNbK4W5W0kMCFl5iFgjyGZoA==</ds:SignatureValue>
                 <ds:KeyInfo Id="KeyId-1">
                     <wsse:SecurityTokenReference wsu:Id="STRId-1">

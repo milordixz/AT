@@ -47,3 +47,23 @@ function send_sub(){
 
     alert(otv);
 }
+
+function send_soap(){
+    var ajax = new XMLHttpRequest();
+    var sName = document.getElementById("sName").value;
+    var sCode = document.getElementById("sCode").value;
+    var sData = document.getElementById("sData").value;
+    ajax.open('POST', '/soap', false);
+
+    var json = new Object();
+    json.sName = sName;
+    json.sCode = sCode;
+    json.sData = sData;
+    ajax.send(JSON.stringify(json));
+    var otv =  ajax.responseText;
+
+    var div2 = document.getElementById('div2');
+    div2.innerHTML = otv;
+
+
+}
