@@ -65,7 +65,7 @@ public class Encrypt {
          keyStore = KeyStore.getInstance("ViPNetContainer", "ViPNet");
 
          // сохранение хранилища
-         keyStore.load(new FileInputStream("C:\\token"), null);
+         keyStore.load(new FileInputStream("C:\\sign\\token"), null);
 
          // подготовка названия записи
          alias = "key";
