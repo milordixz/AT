@@ -26,7 +26,7 @@ public class Sertification extends HttpServlet {
         String CreateSoap;
         try {
             CreateSoap = soap.create();
-            response.getOutputStream().write(CreateSoap.getBytes());
+            response.getOutputStream().write(CreateSoap.getBytes("utf-8"));
         } catch (Exception e){
             e.printStackTrace();
         }
