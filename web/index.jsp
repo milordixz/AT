@@ -72,7 +72,7 @@
         <input type="text" name="sData" id="sData" placeholder="sData">
         <input type="submit" onclick="send_soap()" >
       <hr>
-<plaintext id="div2"></plaintext>
+<code id="div2"></code>
 
     </div>
     <div><table style="width: 100%">

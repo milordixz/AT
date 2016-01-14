@@ -63,7 +63,7 @@ function send_soap(){
     var otv =  ajax.responseText;
 
     var div2 = document.getElementById('div2');
-    div2.innerHTML = otv;
+    div2.innerText = otv;
 
 
 }
