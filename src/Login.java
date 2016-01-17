@@ -29,9 +29,9 @@ public class Login extends HttpServlet {
 
             response.setContentType("text/html; charset=UTF-8");
             if (!FIO.isEmpty()) {
-                response.getOutputStream().write(FIO.getBytes());
+                response.getOutputStream().write(FIO.getBytes("UTF-8"));
             } else {
-                response.getOutputStream().write("Non password or login correct".getBytes());
+                response.getOutputStream().write("Non password or login correct".getBytes("UTF-8"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
